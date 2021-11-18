@@ -26,6 +26,7 @@ type User struct {
 	MailNickname      string            `json:"mailNickname,omitempty"`
 	PasswordProfile   PasswordProfile   `json:"passwordProfile,omitempty"`
 	OfficeLocation	  string            `json:"officeLocation,omitempty"`
+	UsageLocation	  string            `json:"usageLocation,omitempty"`
 
 	activePhone string       // private cache for the active phone number
 	graphClient *GraphClient // the graphClient that called the user
@@ -45,9 +46,9 @@ type PasswordProfile struct {
 func (u User) String() string {
 	return fmt.Sprintf("User(ID: \"%v\", BusinessPhones: \"%v\", DisplayName: \"%v\", GivenName: \"%v\", "+
 		"Mail: \"%v\", MobilePhone: \"%v\", PreferredLanguage: \"%v\", Surname: \"%v\", UserPrincipalName: \"%v\", "+
-		"ActivePhone: \"%v\", OfficeLocation: \"%v\", DirectAPIConnection: %v)",
+		"ActivePhone: \"%v\", OfficeLocation: \"%v\", UsageLocation: \"%v\", DirectAPIConnection: %v)",
 		u.ID, u.BusinessPhones, u.DisplayName, u.GivenName, u.Mail, u.MobilePhone, u.PreferredLanguage, u.Surname,
-		u.UserPrincipalName, u.activePhone, u.OfficeLocation, u.graphClient != nil)
+		u.UserPrincipalName, u.activePhone, u.OfficeLocation, u.UsageLocation, u.graphClient != nil)
 }
 
 // setGraphClient sets the graphClient instance in this instance and all child-instances (if any)
